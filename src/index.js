@@ -1,6 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+
+// eslint-disable-next-line import/no-extraneous-dependencies
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from 'react-router-dom';
+
 import App from './templates/home/App';
 import reportWebVitals from './reportWebVitals';
 import ThemeContext from './context/themeContext';
@@ -10,11 +19,17 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<App />} />,
+  ),
+);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeContext>
-      <App />
+      <RouterProvider router={router} />
     </ThemeContext>
   </React.StrictMode>,
 );

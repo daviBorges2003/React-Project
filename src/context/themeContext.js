@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Container } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Header from '../components/Header';
@@ -64,7 +65,7 @@ export default function ThemeContext({ children }) {
     >
       <CssBaseline />
       <Header Handle={HandleTheme} />
-      {children}
+      <Container maxWidth="md">{children}</Container>
     </ThemeProvider>
   );
 }
