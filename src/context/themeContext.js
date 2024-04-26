@@ -7,6 +7,12 @@ import Header from '../components/Header';
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
+    primary: {
+      main: '#BFC2D9',
+      light: '#7F8AD9',
+      dark: '#7F8AD9',
+      contrastText: '#000',
+    },
   },
   components: {
     MuiCard: {
@@ -29,6 +35,12 @@ const darkTheme = createTheme({
 const light = createTheme({
   palette: {
     mode: 'light',
+    primary: {
+      main: '#BFC2D9',
+      light: '#7F8AD9',
+      dark: '#7F8AD9',
+      contrastText: '#000',
+    },
     background: {
       default: '#ebebeb',
     },

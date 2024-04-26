@@ -1,47 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  Modal, Card, Typography, Fade, Button, Box,
+  Card, Typography, Button, Modal, Stack, TextField, Box,
 } from '@mui/material';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { CirclePicker } from 'react-color';
 
-import EditIcon from '@mui/icons-material/Edit';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
-const style = {
-  Padding: '0',
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+function ModalCreate({
+  text, open, but, type,
+}) {
+  const [color, setColor] = useState('#fff');
+  console.log(color);
 
-function ModalCreate({ open, text, close }) {
+  const HandleChangeColor = (cl) => setColor(cl.hex);
   return (
     <Modal
-      onClose={close}
       open={open}
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100vw',
+        height: '100vh',
+      }}
     >
-      <Fade in={open}>
-        <Box sx={style}>
-          <Button
-            onClick={close}
-            variant="text"
-            size="small"
-          >
-            <EditIcon />
-          </Button>
-          <Card sx={{
-            width: '100%',
-            height: '100%',
-          }}
-          >
-            <Typography>{text}</Typography>
-          </Card>
-        </Box>
-      </Fade>
+      <Card sx={{
+        display: 'flex', gap: '20px', flexDirection: 'column', padding: '30px', width: '500px',
+      }}
+      >
+        <Button sx={{ top: '16px' }} onClick={but}><ExitToAppIcon /></Button>
+        <Typography sx={{ textDecoration: 'underline' }} variant="h4">{type}</Typography>
+        <Typography variant="h6">{text}</Typography>
+        <Stack spacing={3} sx={{ width: '100%' }}>
+          <Stack spacing={2}>
+            <Typography variant="h6">Informações do Curso:</Typography>
+            <TextField variant="standard" label="Nome:" />
+          </Stack>
+          <Stack spacing={2}>
+            <Typography variant="h6">Informações do Curso:</Typography>
+            <Box sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}
+            >
+              <CirclePicker onChange={HandleChangeColor} />
+              <Box sx={{
+                width: '100px',
+                height: '100px',
+                bgcolor: color,
+                color: '#fff',
+                textAlign: 'center',
+                borderRadius: '15px',
+                boxShadow: '0px 10px 15px -3px rgba(0,0,0,0.1)',
+              }}
+              >
+                <Typography sx={{ color: color === '#fff' ? '#000' : '#fff' }} variant="subtitle1">{color}</Typography>
+              </Box>
+            </Box>
+          </Stack>
+          <Button variant="contained" sx={{ top: '16px' }} onClick={but}>Update</Button>
+        </Stack>
+      </Card>
     </Modal>
   );
 }
