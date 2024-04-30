@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom';
 
 import App from './templates/home/App';
+import Periodos from './templates/Periodos/Periodos';
 import reportWebVitals from './reportWebVitals';
 import ThemeContext from './context/themeContext';
 
@@ -21,7 +22,11 @@ import '@fontsource/roboto/700.css';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />} />,
+    <Route>
+      <Route path="/" element={<App />} />
+      ,
+      <Route path="/periodos/:id" element={<Periodos />} />
+    </Route>,
   ),
 );
 
