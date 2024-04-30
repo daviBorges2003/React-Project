@@ -5,37 +5,50 @@ import {
 } from '@mui/material';
 
 import EditIcon from '@mui/icons-material/Edit';
+import TextLabel from '../TextField/index';
+
 import ModalCreate from '../Modal';
 
-function HomeCards({ id, colors, Name }) {
+function HomeCards({
+  id, colors, Name,
+}) {
   const [modal, setModal] = useState(false);
-
-  console.log(modal);
+  const [hover, setHover] = useState(false);
 
   return (
     <Grid key={id} item xs={2} sm={4} md={4}>
       <Card
+        onMouseOver={() => setHover(true)}
+        onMouseOut={() => setHover(false)}
         className="CardEffects"
         sx={{
           position: 'relative',
           border: `2px solid ${colors}`,
-          width: '250px',
-          height: '250px',
+          minWidth: '150px',
+          minHeight: '200px',
+          width: '100%',
+          height: '25vh',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
-        <Typography
-          sx={{
-            textAlign: 'center',
-          }}
-          color={colors}
-          variant="h5"
-        >
-          {Name}
-        </Typography>
+        {!hover && (
+          <Typography
+            sx={{
+              textAlign: 'center',
+            }}
+            color={colors}
+            variant="h5"
+          >
+            {Name}
+          </Typography>
+        )}
+
+        {hover && (
+          <TextLabel id={id} />
+        )}
         <Button
           onClick={() => setModal(true)}
           variant="text"

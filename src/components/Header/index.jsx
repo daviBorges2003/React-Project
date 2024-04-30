@@ -1,10 +1,8 @@
 import {
-  Box, Card, Typography, Avatar, Button,
+  Box, Card,
 } from '@mui/material';
-import SettingsIcon from '@mui/icons-material/Settings';
 import React from 'react';
 import SwitchTheme from '../Switch';
-import imgUser from '../../img/Backgronds.png';
 
 function Header({ Handle }) {
   return (
@@ -13,30 +11,12 @@ function Header({ Handle }) {
       width: '100%',
     }}
     >
-      <Box
-        sx={{
-          margin: ' auto',
-          display: 'flex',
-          width: 350,
-          gap: '10px',
-          flexDirection: 'row',
-        }}
+      <Card sx={{
+        width: '65px', margin: '0 auto', display: 'flex',
+      }}
       >
-        <Card>
-          <SwitchTheme HandleChange={Handle} />
-        </Card>
-        <Card sx={{ gap: '20px' }}>
-          <Avatar alt="img1" src={imgUser} />
-          <Typography variant="h6">
-            UserName
-          </Typography>
-        </Card>
-        <Card>
-          <Button size="small" variant="text">
-            <SettingsIcon sx={{ fontSize: 30 }} />
-          </Button>
-        </Card>
-      </Box>
+        <SwitchTheme HandleChange={Handle} />
+      </Card>
     </Box>
   );
 }

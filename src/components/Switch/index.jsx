@@ -50,7 +50,7 @@ const IOSSwitch = styled((props) => (
 
 function SwitchTheme({ HandleChange }) {
   return (
-    <FormGroup>
+    <FormGroup sx={{ margin: '0 auto' }}>
       <FormControlLabel
         sx={{ margin: 'auto' }}
         // eslint-disable-next-line react/jsx-no-bind
