@@ -1,103 +1,103 @@
 {
-  "Degree":[
+  "Degree": [
     {
-      "id": 0,
+      "id": "0",
       "Degree_Name": "Nutrição",
       "colors": "#2BFCD3",
-      "classes":[
+      "classes": [
         {
           "id": 0,
-          "Nome_Classe":"Turma 1",
+          "Nome_Classe": "Turma 1",
           "CreateBy": "Davi Borges"
         },
         {
           "id": 1,
-          "Nome_Classe":"Turma 2",
+          "Nome_Classe": "Turma 2",
           "CreateBy": "Joseph Climber"
         }
       ]
     },
     {
-      "id": 1,
+      "id": "1",
       "Degree_Name": "Sistema de Informação",
       "colors": "#2BE1FC",
-      "classes":[
+      "classes": [
         {
           "id": 0,
-          "Nome_Classe":"Turma 1",
+          "Nome_Classe": "Sistema de Informação1 ",
           "CreateBy": "Davi Borges"
         },
         {
           "id": 1,
-          "Nome_Classe":"Turma 2",
+          "Nome_Classe": "Sistema de Informação 2",
           "CreateBy": "Joseph Climber"
         }
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "Degree_Name": "Educação Física",
       "colors": "#2B9FFC",
-      "classes":[
+      "classes": [
         {
           "id": 0,
-          "Nome_Classe":"Turma 1",
+          "Nome_Classe": "Educação Física 1",
           "CreateBy": "Davi Borges"
         },
         {
           "id": 1,
-          "Nome_Classe":"Turma 2",
+          "Nome_Classe": "Educação Física 2",
           "CreateBy": "Joseph Climber"
         }
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "Degree_Name": "Nutrição",
       "colors": "#54A797",
-      "classes":[
+      "classes": [
         {
           "id": 0,
-          "Nome_Classe":"Turma 1",
+          "Nome_Classe": "Nutrição 1",
           "CreateBy": "Davi Borges"
         },
         {
           "id": 1,
-          "Nome_Classe":"Turma 2",
+          "Nome_Classe": "Nutrição 2",
           "CreateBy": "Joseph Climber"
         }
       ]
     },
     {
-      "id": 4,
-      "Degree_Name": "Sistema de Informação",
+      "id": "4",
+      "Degree_Name": "Informação",
       "colors": "#47D2B6",
-      "classes":[
+      "classes": [
         {
           "id": 0,
-          "Nome_Classe":"Turma 1",
+          "Nome_Classe": "Informação 1",
           "CreateBy": "Davi Borges"
         },
         {
           "id": 1,
-          "Nome_Classe":"Turma 2",
+          "Nome_Classe": "Informação 2",
           "CreateBy": "Joseph Climber"
         }
       ]
     },
     {
-      "id": 5,
-      "Degree_Name": "Educação Física",
+      "id": "5",
+      "Degree_Name": "Ciencias",
       "colors": "#06FFA9",
-      "classes":[
+      "classes": [
         {
-          "id": 0,  
-          "Nome_Classe":"Turma 1",
+          "id": 0,
+          "Nome_Classe": "Ciencias 1",
           "CreateBy": "Davi Borges"
         },
         {
           "id": 1,
-          "Nome_Classe":"Turma 2",
+          "Nome_Classe": "Ciencias 2",
           "CreateBy": "Joseph Climber"
         }
       ]
