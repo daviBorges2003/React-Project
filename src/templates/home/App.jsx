@@ -6,7 +6,8 @@ import {
 
 import './styles.css';
 
-import HomeCards from '../../components/HomeCards';
+import ResponseGrid from '../../components/ResponseGrid';
+import HomeCards from '../../components/Card/HomeCards/index';
 
 function Home() {
   const [degrees, setDegrees] = useState(null);
@@ -30,7 +31,7 @@ function Home() {
       height: '100%',
     }}
     >
-      <Grid sx={{ margin: '10px' }} container alignItems="center" spacing={{ xs: 4, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+      <ResponseGrid>
         {
             degrees?.map((props) => (
               <HomeCards
@@ -41,7 +42,7 @@ function Home() {
               />
             ))
           }
-      </Grid>
+      </ResponseGrid>
     </Box>
   );
 }
