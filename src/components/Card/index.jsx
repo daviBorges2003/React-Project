@@ -1,25 +1,42 @@
-import React from 'react';
-import { Card } from '@mui/material';
+import React, { useState } from 'react';
+import {
+  Card, Grid, Typography,
+} from '@mui/material';
 
-function CardPadrao({ children, colors, click }) {
+import ConfigButton from '../Buttons/ConfigButton';
+
+function CardPadrao({
+  colors, text,
+}) {
+  const [hover, onHover] = useState(false);
+
   return (
-    <Card
-      onClick={click}
-      className="CardEffects"
-      sx={{
-        border: `2px solid ${colors}`,
-        minWidth: '150px',
-        minHeight: '200px',
-        width: '100%',
-        height: '30vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      {children}
-    </Card>
+    <Grid item xs={2} sm={4} md={4}>
+      <Card
+        onMouseLeave={() => onHover(false)}
+        onMouseOver={() => onHover(true)}
+        className="CardEffects"
+        sx={{
+          position: 'relative',
+          border: `2px solid ${colors}`,
+          height: '20vh',
+          width: '100%',
+          minWidth: '150px ',
+          minHeight: '200px',
+          borderRadius: '10px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        {hover && (<ConfigButton posTop="15px" posLeft="15px" color={colors} />)}
+        <Typography fontSize="calc(25px + 0.3vw)" align="center" color={colors} variant="h4">
+          {text}
+        </Typography>
+
+      </Card>
+    </Grid>
   );
 }
 

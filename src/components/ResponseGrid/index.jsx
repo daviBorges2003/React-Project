@@ -4,10 +4,9 @@ import { Grid } from '@mui/material';
 function ResponseGrid({ children }) {
   return (
     <Grid
-      sx={{ margin: '10px' }}
       container
       alignItems="center"
-      spacing={{ xs: 4, md: 4 }}
+      spacing={{ xs: 4, md: 3 }}
       columns={{ xs: 4, sm: 8, md: 12 }}
     >
       {children}

@@ -1,16 +1,18 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  Grid, Box,
+  Box,
+  useMediaQuery,
 } from '@mui/material';
 
 import './styles.css';
 
 import ResponseGrid from '../../components/ResponseGrid';
-import HomeCards from '../../components/Card/HomeCards/index';
+import CardPadrao from '../../components/Card';
 
 function Home() {
   const [degrees, setDegrees] = useState(null);
+
+  const Media = useMediaQuery('(min-width:600px)');
 
   const Api = async () => {
     const response = await fetch('http://localhost:3000/Degree');
@@ -24,6 +26,8 @@ function Home() {
     Api();
   }, []);
 
+  console.log('Rend');
+
   return (
     <Box sx={{
       flexGrow: 1,
@@ -34,11 +38,12 @@ function Home() {
       <ResponseGrid>
         {
             degrees?.map((props) => (
-              <HomeCards
-                id={props.id}
-                Name={props.Degree_Name}
-                colors={props.colors}
+              <CardPadrao
+                size={Media}
                 key={props.id}
+                id={props.id}
+                colors={props.colors}
+                text={props.Degree_Name}
               />
             ))
           }
