@@ -26,8 +26,6 @@ function Home() {
     Api();
   }, []);
 
-  console.log('Rend');
-
   return (
     <Box sx={{
       flexGrow: 1,

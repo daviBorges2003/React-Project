@@ -1,9 +1,10 @@
 .CardEffects{
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
-.CardEffects:hover{
+.CardEffects:hover , .CardEffects:in-range {
     cursor: pointer;
     transform: scale(1.05);
     transition: 0.5s;
 }
+

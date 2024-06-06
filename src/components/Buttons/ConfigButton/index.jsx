@@ -6,10 +6,13 @@ import {
 
 import SettingsIcon from '@mui/icons-material/Settings';
 
-function ConfigButton({ color, posTop, posLeft }) {
+function ConfigButton({
+  color, posTop, posLeft, click,
+}) {
   return (
-    <Tooltip title="Configs">
+    <Tooltip onClick={click} title="Configs">
       <IconButton
+        aria-haspopup="true"
         sx={{
           position: 'absolute',
           top: posTop,
