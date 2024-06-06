@@ -1,23 +1,6 @@
 {
   "Degree": [
     {
-      "id": "0",
-      "Degree_Name": "Nutrição",
-      "colors": "#2BFCD3",
-      "classes": [
-        {
-          "id": 0,
-          "Nome_Classe": "Turma 1",
-          "CreateBy": "Davi Borges"
-        },
-        {
-          "id": 1,
-          "Nome_Classe": "Turma 2",
-          "CreateBy": "Joseph Climber"
-        }
-      ]
-    },
-    {
       "id": "1",
       "Degree_Name": "Sistema de Informação",
       "colors": "#2BE1FC",
