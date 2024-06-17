@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import {
   Box,
-  useMediaQuery,
 } from '@mui/material';
 
 import './styles.css';
 
-import ResponseGrid from '../../components/ResponseGrid';
-import CardPadrao from '../../components/Card';
+import { useNavigate } from 'react-router-dom';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import ResponseGrid from '../../components/atoms/ResponseGrid';
+import CardPadrao from '../../components/organisms/Card/CardPadrao';
+import ButtonsPadrao from '../../components/moleculas/Buttons/ButtonsPadrao';
 
 function Home() {
   const [degrees, setDegrees] = useState(null);
 
-  const Media = useMediaQuery('(min-width:600px)');
+  const navigate = useNavigate();
 
   const Api = async () => {
     const response = await fetch('http://localhost:3000/Degree');
@@ -33,15 +35,17 @@ function Home() {
       height: '100%',
     }}
     >
+      <ButtonsPadrao>
+        Create
+        <AddCircleIcon />
+      </ButtonsPadrao>
       <ResponseGrid>
         {
             degrees?.map((props) => (
               <CardPadrao
-                size={Media}
+                click={() => navigate(`/periodos/${props.id}`)}
                 key={props.id}
-                id={props.id}
-                colors={props.colors}
-                text={props.Degree_Name}
+                properties={props}
               />
             ))
           }

@@ -1,30 +1,30 @@
 /* eslint-disable radix */
 /* eslint-disable react/no-children-prop */
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import {
-  Box, Grid, Typography,
+  Box,
 } from '@mui/material';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
-import ModalCreate from '../../components/Modal';
-import ResponseGrid from '../../components/ResponseGrid';
-import CardPadrao from '../../components/Card';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { CardHeader } from '../../components/organisms/Header/index';
+import ConfButton from '../../components/moleculas/Buttons/ConfButton';
+import CardClasses from '../../components/organisms/Card/CardClasses';
+import ResponseGrid from '../../components/atoms/ResponseGrid';
 
 function Periodos() {
   const { id } = useParams();
 
+  const navigate = useNavigate();
+
   const [classe, setClasse] = useState(null);
-  const [color, setColors] = useState(null);
-  const [modal, setModal] = useState(false);
 
   const Api = async () => {
-    const response = await fetch('http://localhost:3000/Degree');
+    const response = await fetch(`http://localhost:3000/Degree/${id}`);
     const ResJson = await response.json();
 
-    setColors(ResJson[id].colors);
-    return setClasse(ResJson[id].classes);
+    return setClasse(ResJson.classes);
   };
 
   useEffect(() => {
@@ -33,27 +33,23 @@ function Periodos() {
 
   return (
     <Box>
-      <ResponseGrid>
-        <Grid key={id} item xs={2} sm={4} md={4}>
-          <CardPadrao click={() => setModal(true)} colors="#D1D1D1">
-            <AddCircleOutlineIcon sx={{ width: '100px', height: '100px' }} />
-            <Typography variant="h6"> Insert new Class</Typography>
-          </CardPadrao>
+      <CardHeader sx={{
+        position: 'absolute',
+        top: '50px',
+        left: '15px',
+        width: '50px',
+        borderRadius: '50px',
+      }}
+      >
+        <ConfButton click={() => navigate('/')}><ArrowBackIosIcon /></ConfButton>
+      </CardHeader>
 
-          {!!modal && (
-            <ModalCreate key={id} open={modal}>
-              {/* < but={() => setModal(false)} /> */}
-            </ModalCreate>
-          )}
-        </Grid>
+      <ResponseGrid>
         {
-            classe?.map((arr) => (
-              <CardPadrao
-                colors={color}
-                Name={arr.Nome_Classe}
-              />
-            ))
-          }
+          classe?.map((props) => (
+            <CardClasses properties={props} />
+          ))
+        }
       </ResponseGrid>
     </Box>
   );
