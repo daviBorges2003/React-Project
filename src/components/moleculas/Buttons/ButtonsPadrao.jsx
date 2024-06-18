@@ -3,9 +3,10 @@ import { styled } from '@mui/material/styles';
 import React from 'react';
 
 const CustomButtons = styled(Button)(({ theme }) => ({
+  width: '100%',
   padding: '10px',
   marginBottom: '10px',
-  borderRadius: '15px',
+  borderRadius: '5px',
   backgroundColor: theme.palette.primary.main,
   color: theme.palette.primary.contrastText,
   display: 'flex',
@@ -16,8 +17,8 @@ const CustomButtons = styled(Button)(({ theme }) => ({
   },
 }));
 
-function ButtonsPadrao({ children }) {
-  return <CustomButtons>{children}</CustomButtons>;
+function ButtonsPadrao({ children, click }) {
+  return <CustomButtons onClick={click}>{children}</CustomButtons>;
 }
 
 export default ButtonsPadrao;
