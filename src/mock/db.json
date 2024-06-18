@@ -3,7 +3,7 @@
     {
       "id": "1",
       "Degree_Name": "Sistema de Informação",
-      "colors": "#2BE1FC",
+      "password": "1234",
       "classes": [
         {
           "id": 0,
@@ -20,7 +20,7 @@
     {
       "id": "2",
       "Degree_Name": "Educação Física",
-      "colors": "#2B9FFC",
+      "password": "1234",
       "classes": [
         {
           "id": 0,
@@ -37,7 +37,7 @@
     {
       "id": "3",
       "Degree_Name": "Nutrição",
-      "colors": "#54A797",
+      "password": "1234",
       "classes": [
         {
           "id": 0,
@@ -54,7 +54,7 @@
     {
       "id": "4",
       "Degree_Name": "Informação",
-      "colors": "#47D2B6",
+      "password": "1234",
       "classes": [
         {
           "id": 0,
@@ -71,7 +71,7 @@
     {
       "id": "5",
       "Degree_Name": "Ciencias",
-      "colors": "#06FFA9",
+      "password": "1234",
       "classes": [
         {
           "id": 0,
