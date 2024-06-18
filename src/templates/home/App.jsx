@@ -5,16 +5,15 @@ import {
 
 import './styles.css';
 
-import { useNavigate } from 'react-router-dom';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ResponseGrid from '../../components/atoms/ResponseGrid';
 import CardPadrao from '../../components/organisms/Card/CardPadrao';
 import ButtonsPadrao from '../../components/moleculas/Buttons/ButtonsPadrao';
+import ModalCreate from '../../components/organisms/Modal/CreateModal/Modal';
 
 function Home() {
-  const [degrees, setDegrees] = useState(null);
-
-  const navigate = useNavigate();
+  const [degrees, setDegrees] = useState([]);
+  const [modal, setModal] = useState(false);
 
   const Api = async () => {
     const response = await fetch('http://localhost:3000/Degree');
@@ -29,13 +28,16 @@ function Home() {
   }, []);
 
   return (
-    <Box sx={{
-      flexGrow: 1,
-      width: '100%',
-      height: '100%',
-    }}
+    <Box
+      onMouseLeave={() => setModal(false)}
+      sx={{
+        flexGrow: 1,
+        width: '100%',
+        height: '100%',
+      }}
     >
-      <ButtonsPadrao>
+      <ModalCreate open={modal} />
+      <ButtonsPadrao click={() => setModal(true)}>
         Create
         <AddCircleIcon />
       </ButtonsPadrao>
@@ -43,13 +45,13 @@ function Home() {
         {
             degrees?.map((props) => (
               <CardPadrao
-                click={() => navigate(`/periodos/${props.id}`)}
                 key={props.id}
                 properties={props}
               />
             ))
           }
       </ResponseGrid>
+
     </Box>
   );
 }

@@ -24,7 +24,6 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/" element={<App />} />
-      ,
       <Route path="/periodos/:id" element={<Periodos />} />
     </Route>,
   ),
