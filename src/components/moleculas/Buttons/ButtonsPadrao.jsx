@@ -4,6 +4,7 @@ import React from 'react';
 
 const CustomButtons = styled(Button)(({ theme }) => ({
   width: '100%',
+  height: '30px',
   padding: '10px',
   marginBottom: '10px',
   borderRadius: '5px',

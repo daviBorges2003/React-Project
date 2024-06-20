@@ -27,7 +27,7 @@ function CardPadrao({ properties, click }) {
         onClick={click}
         className="CardEffects"
       >
-        <TitleTexts color="#fff">
+        <TitleTexts font="35px" color="#fff">
           {properties.Degree_Name}
         </TitleTexts>
       </CustomCard>

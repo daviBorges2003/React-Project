@@ -25,18 +25,17 @@ function Home() {
 
   useEffect(() => {
     Api();
-  }, []);
+  }, [!modal]);
 
   return (
     <Box
-      onMouseLeave={() => setModal(false)}
       sx={{
         flexGrow: 1,
         width: '100%',
         height: '100%',
       }}
     >
-      <ModalCreate open={modal} />
+      <ModalCreate close={() => setModal(false)} open={modal} />
       <ButtonsPadrao click={() => setModal(true)}>
         Create
         <AddCircleIcon />

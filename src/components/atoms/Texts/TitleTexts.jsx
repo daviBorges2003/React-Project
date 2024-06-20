@@ -4,15 +4,15 @@ import { Typography } from '@mui/material';
 
 const TitleText = styled(Typography)(({ theme }) => ({
   color: ({ color }) => (color || theme.palette.text),
-  fontSize: '30px',
+  fontSize: ({ font }) => (font || '35px'),
   textWrap: 'wrap',
   textAlign: 'center',
   fontWeight: 'bolder',
 }));
 
-function TitleTexts({ children, color }) {
+function TitleTexts({ children, color, font }) {
   return (
-    <TitleText color={color}>
+    <TitleText fontSize={font} color={color}>
       {children}
     </TitleText>
   );
