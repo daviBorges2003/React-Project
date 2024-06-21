@@ -6,13 +6,14 @@ const TitleText = styled(Typography)(({ theme }) => ({
   color: ({ color }) => (color || theme.palette.text),
   fontSize: ({ font }) => (font || '35px'),
   textWrap: 'wrap',
-  textAlign: 'center',
   fontWeight: 'bolder',
 }));
 
-function TitleTexts({ children, color, font }) {
+function TitleTexts({
+  children, color, font, align,
+}) {
   return (
-    <TitleText fontSize={font} color={color}>
+    <TitleText sx={{ textAlign: align || 'center' }} fontSize={font} color={color}>
       {children}
     </TitleText>
   );
