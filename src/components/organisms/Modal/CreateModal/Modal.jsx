@@ -17,19 +17,18 @@ function ModalCreate({
   open, close,
 }) {
   const [nome, setNome] = useState('');
-  const [password, setPassword] = useState('');
+  const [Password, setPassword] = useState('');
   const [status, setStatus] = useState(false);
 
   const values = {
-    Degree_Name: nome,
-    Password: password,
-    classes: [],
+    name: nome,
+    password: Password,
   };
 
   const CreateDegree = async () => {
-    if (status === '' || password === '') return setStatus('error');
+    if (status === '' || Password === '') return setStatus('error');
 
-    const response = await fetch('http://localhost:3000/Degree', {
+    const response = await fetch(`${process.env.REACT_APP_URL}/degree`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values),
@@ -37,10 +36,9 @@ function ModalCreate({
 
     if (!response.ok) return setStatus('error');
 
-    setStatus('success');
-
     const ResJson = await response.json();
-    console.log(ResJson);
+
+    setStatus('success');
     return ResJson;
   };
 
@@ -84,7 +82,7 @@ function ModalCreate({
         {status === 'error' && (
           <StatusBar status={status} title="Error!">
             {
-              password === '' || nome === '' ? (
+              Password === '' || nome === '' ? (
                 <>
                   Insira o nome da turma e a senha !
                 </>

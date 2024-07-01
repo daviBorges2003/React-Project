@@ -16,11 +16,14 @@ function Home() {
   const [modal, setModal] = useState(false);
 
   const Api = async () => {
-    const response = await fetch('http://localhost:3000/Degree');
+    const response = await fetch(`${process.env.REACT_APP_URL}/degree`, {
+      method: 'GET',
+    });
+
     const ResJson = await response.json();
 
-    setDegrees(ResJson);
-    return ResJson;
+    setDegrees(ResJson.data);
+    return ResJson.data;
   };
 
   useEffect(() => {
