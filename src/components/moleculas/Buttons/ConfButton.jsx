@@ -8,14 +8,14 @@ const IconButtonCustom = styled(IconButton)(({ theme }) => ({
   left: '5px',
   width: '50px',
   height: '50px',
-  backgroundColor: theme.palette.primary.card,
+  backgroundColor: 'none',
   borderRadius: '50px',
-  color: theme.palette.text.primary,
+  color: ({ color }) => color || theme.palette.primary.contrastText,
 }));
 
-function ConfButton({ children, click }) {
+function ConfButton({ children, click, color }) {
   return (
-    <IconButtonCustom onClick={click}>
+    <IconButtonCustom sx={{ color }} onClick={click}>
       {children}
     </IconButtonCustom>
   );

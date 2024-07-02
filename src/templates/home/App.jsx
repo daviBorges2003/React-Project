@@ -6,28 +6,26 @@ import {
 import './styles.css';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+
 import ResponseGrid from '../../components/atoms/ResponseGrid';
-import CardPadrao from '../../components/organisms/Card/CardPadrao';
+import CardPadrao from '../../components/organisms/Card/CardDelete';
 import ButtonsPadrao from '../../components/moleculas/Buttons/ButtonsPadrao';
-import ModalCreate from '../../components/organisms/Modal/CreateModal/Modal';
+import ModalCreate from '../../components/organisms/Modal/CreateModal/createModal';
 
 function Home() {
   const [degrees, setDegrees] = useState([]);
   const [modal, setModal] = useState(false);
 
-  const Api = async () => {
-    const response = await fetch(`${process.env.REACT_APP_URL}/degree`, {
+  const SearchApi = async () => {
+    await fetch(`${process.env.REACT_APP_URL}/degree`, {
       method: 'GET',
-    });
-
-    const ResJson = await response.json();
-
-    setDegrees(ResJson.data);
-    return ResJson.data;
+    })
+      .then((res) => res.json())
+      .then((data) => setDegrees(data.data));
   };
 
   useEffect(() => {
-    Api();
+    SearchApi();
   }, [!modal]);
 
   return (
@@ -53,7 +51,6 @@ function Home() {
             ))
           }
       </ResponseGrid>
-
     </Box>
   );
 }
