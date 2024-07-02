@@ -8,7 +8,7 @@ import './styles.css';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import ResponseGrid from '../../components/atoms/ResponseGrid';
-import CardPadrao from '../../components/organisms/Card/CardDelete';
+import Degree from '../../components/organisms/Card/Degree';
 import ButtonsPadrao from '../../components/moleculas/Buttons/ButtonsPadrao';
 import ModalCreate from '../../components/organisms/Modal/CreateModal/createModal';
 
@@ -44,7 +44,7 @@ function Home() {
       <ResponseGrid>
         {
             degrees?.map((props) => (
-              <CardPadrao
+              <Degree
                 key={props.id}
                 properties={props}
               />
