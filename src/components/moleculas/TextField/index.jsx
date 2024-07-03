@@ -33,7 +33,7 @@ function TextLabel({ id }) {
         size="small"
         label="Password:"
         type="password"
-        variant="filled"
+        variant="outlined"
         color={errorPass ? 'error' : 'primary'}
       />
       {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled } from '@mui/material/styles';
+
 import {
   Box, FormControl, InputAdornment, IconButton, FilledInput, InputLabel,
 } from '@mui/material';
@@ -7,41 +7,26 @@ import {
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-const IconLabel = styled(Box)(({ theme }) => ({
-  minWidth: '50px',
-  height: '48px',
-  borderRadius: '5px',
-  marginRight: '5px',
-  padding: '5px',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
-}));
-
 function InputText({
-  place, change, icon, type,
+  place, change, type, err,
 }) {
   const [showPassword, setShowPassword] = React.useState(false);
 
   return (
-    <Box sx={{
-      width: '100%',
-      display: 'flex',
-      flexDirection: 'row',
-      justifyItems: 'center',
-      marginBottom: '10px',
-    }}
-    >
-      <IconLabel color="#fff">{icon}</IconLabel>
+    <Box>
       <FormControl
+        error={err}
         variant="filled"
         size="small"
+        sx={{
+          width: '100%',
+        }}
       >
-        <InputLabel>{place}</InputLabel>
+        <InputLabel htmlFor="filled-adornment-amount">{place}</InputLabel>
         {
         type === 'password' ? (
           <FilledInput
+            id="filled-adornment-amount"
             type={showPassword ? 'text' : 'password'}
             onChange={change}
             endAdornment={(
@@ -59,6 +44,7 @@ function InputText({
           />
         ) : (
           <FilledInput
+            id="filled-adornment-amount"
             type={type}
             onChange={change}
           />

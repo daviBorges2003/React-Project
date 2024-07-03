@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   Grid, Card,
 } from '@mui/material';
 
 import { styled } from '@mui/material/styles';
 import DeleteIcon from '@mui/icons-material/Delete';
-import KeyIcon from '@mui/icons-material/Key';
 
 import InputText from '../../moleculas/Inputs/inputText';
 import ConfButton from '../../moleculas/Buttons/ConfButton';
 import DeleteModal from '../Modal/DeleteModal/deleteModal';
 import TitleTexts from '../../atoms/Texts/TitleTexts';
-import StatusBar from '../../moleculas/StatusBox/StatusBox';
 
 const CustomCard = styled(Card)(({ theme }) => ({
   position: 'relative',
@@ -24,15 +23,19 @@ const CustomCard = styled(Card)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   backgroundColor: theme.palette.mode === 'dark' ? theme.palette.primary.card : theme.palette.primary.light,
-  boxShadow: theme.shadows[1],
+  boxShadow: theme.shadows[2],
 }));
 
 function Degree({
   properties,
 }) {
   const [deleteModal, setDeleteModal] = useState(false);
+  const [valid, setValid] = useState(false);
   const [password, setPassword] = useState('');
-  const [err, setErr] = useState(false);
+  const [err, setErr] = useState('');
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const Delete = async (id) => {
     await fetch(`${process.env.REACT_APP_URL}/degree/${id}`, {
@@ -40,16 +43,24 @@ function Degree({
     })
       .then((res) => res.json())
       .then(() => setErr(false))
-      .then(() => window.location.reload());
+      .then(() => navigate('/'));
+  };
+
+  const HandleNavigate = (id) => {
+    navigate(`/degree/${id}`);
   };
 
   function HandleDelete(prop) {
     if (password !== prop.password) {
-      return setErr(true);
+      return setErr('error');
     }
 
     Delete(prop.id);
   }
+
+  useEffect(() => {
+
+  }, [location]);
 
   return (
     <Grid item xs={2} sm={4} md={4}>
@@ -65,17 +76,32 @@ function Degree({
       </CustomCard>
       <DeleteModal
         name={properties.name}
-        click={() => HandleDelete(properties)}
         open={deleteModal}
-        close={() => setDeleteModal(false)}
+        click={() => HandleDelete(properties)}
+        close={() => { setDeleteModal(false); setErr(''); }}
       >
-        <InputText change={(e) => setPassword(e.target.value)} icon={<KeyIcon />} place="insira a senha" />
-        {
-          err && (
-            <StatusBar status="error" />
-          )
-        }
+        <InputText
+          err={err}
+          type="password"
+          change={(e) => setPassword(e.target.value)}
+          place="Senha:"
+        />
       </DeleteModal>
+      <DeleteModal
+        name={properties.name}
+        open={valid}
+        click={() => HandleNavigate(properties.id)}
+        close={() => { setValid(false); setErr(''); }}
+        btn="Entrar"
+      >
+        <InputText
+          err={err}
+          type="password"
+          change={(e) => setPassword(e.target.value)}
+          place="Senha:"
+        />
+      </DeleteModal>
+
     </Grid>
   );
 }

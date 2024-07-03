@@ -16,6 +16,12 @@ const darkTheme = createTheme({
       card: '#302F2F',
       contrastText: '#fff',
     },
+    success: {
+      main: '#A7C8A4',
+      light: '#CAF3C6',
+      dark: '#3D7338',
+      text: '#302F2F',
+    },
   },
   text: {
     primary: '#FFF',
@@ -38,6 +44,12 @@ const light = createTheme({
       dark: '#112C77',
       contrastText: '#fff',
 
+    },
+    success: {
+      main: '#A7C8A4',
+      light: '#CAF3C6',
+      dark: '#3D7338',
+      text: '#302F2F',
     },
   },
   background: {

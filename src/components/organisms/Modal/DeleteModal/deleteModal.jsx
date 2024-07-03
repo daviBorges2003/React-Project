@@ -4,7 +4,7 @@ import ModalPadrao from '../padrao';
 import ButtonsPadrao from '../../../moleculas/Buttons/ButtonsPadrao';
 
 function DeleteModal({
-  children, open, close, name, click,
+  children, open, close, name, click, btn, txt,
 }) {
   return (
     <ModalPadrao open={open} close={close}>
@@ -12,11 +12,11 @@ function DeleteModal({
         {name}
       </Typography>
       <Typography variant="body1">
-        Você realmente deseja excluir?
+        {txt}
       </Typography>
       {children}
       <ButtonsPadrao click={click}>
-        Excluir
+        {btn}
       </ButtonsPadrao>
     </ModalPadrao>
   );

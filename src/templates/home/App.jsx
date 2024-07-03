@@ -6,6 +6,7 @@ import {
 import './styles.css';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import ResponseGrid from '../../components/atoms/ResponseGrid';
 import Degree from '../../components/organisms/Card/Degree';
@@ -15,6 +16,7 @@ import ModalCreate from '../../components/organisms/Modal/CreateModal/createModa
 function Home() {
   const [degrees, setDegrees] = useState([]);
   const [modal, setModal] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const SearchApi = async () => {
     await fetch(`${process.env.REACT_APP_URL}/degree`, {
@@ -25,7 +27,11 @@ function Home() {
   };
 
   useEffect(() => {
-    SearchApi();
+    setLoading(true);
+    setInterval(() => {
+      setLoading(false);
+      SearchApi();
+    }, 2000);
   }, [!modal]);
 
   return (
@@ -51,6 +57,16 @@ function Home() {
             ))
           }
       </ResponseGrid>
+      {
+        loading && (
+          <CircularProgress sx={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+          }}
+          />
+        )
+      }
     </Box>
   );
 }

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import ModalPadrao from '../padrao';
 import TitleTexts from '../../../atoms/Texts/TitleTexts';
@@ -49,8 +47,8 @@ function ModalCreate({
     <ModalPadrao open={open} close={close}>
       <ConfButton click={close}><CloseIcon /></ConfButton>
       <TitleTexts font="20px">Create Degree</TitleTexts>
-      <InputText change={(e) => setNome(e.target.value)} type="text" place="Degree:" icon={<AccountCircleIcon />} />
-      <InputText change={(e) => setPassword(e.target.value)} type="password" place="Password:" icon={<DriveFileRenameOutlineIcon />} />
+      <InputText change={(e) => setNome(e.target.value)} type="text" place="Materia:" />
+      <InputText change={(e) => setPassword(e.target.value)} type="password" place="Senha:" />
       <ButtonsPadrao click={() => CreateDegree()}>Create</ButtonsPadrao>
       {status === 'success' && (
       <StatusBar status={status} title="Success!">

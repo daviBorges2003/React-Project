@@ -15,8 +15,10 @@ function StatusBar({
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: status === 'error' ? theme.palette.error.light : theme.palette.success.light,
-    color: theme.palette.primary.contrastText,
-    border: `5px solid ${status === 'error' ? theme.palette.error.main : theme.palette.success.main}`,
+    color: status === 'error' ? theme.palette.error.dark : theme.palette.success.dark,
+    border: `2px solid ${status === 'error' ? theme.palette.error.main : theme.palette.success.dark}`,
+    borderRadius: '15px',
+    boxShadow: theme.shadows[1],
   }));
 
   return (
